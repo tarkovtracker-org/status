@@ -84,24 +84,23 @@ h1 {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
   z-index: 1;
   position: relative;
 }
 
-.status-column,
-.history-column {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+.status-history-grid {
+  display: grid;
+  gap: 20px;
 }
 
-.status-grid {
+.row {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: 20px;
+  align-items: stretch;
 }
 
 .status-card {
@@ -162,11 +161,6 @@ h1 {
   margin-top: 6px;
   color: var(--muted);
   font-size: 0.95rem;
-}
-
-.history-grid {
-  display: grid;
-  gap: 20px;
 }
 
 .history-card {
@@ -304,7 +298,7 @@ h1 {
     padding: 32px 18px 48px;
   }
 
-  .layout {
+  .row {
     grid-template-columns: 1fr;
   }
 
