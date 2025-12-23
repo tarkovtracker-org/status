@@ -14,10 +14,17 @@
     "method": "GET"
   },
   {
-    "id": "trackerbot",
-    "name": "TrackerBot",
-    "type": "discord-bot",
-    "url": "https://trackerbot.tarkovtracker.org/health",
+    "id": "bug-report-dev",
+    "name": "Bug Report Dev",
+    "type": "web",
+    "url": "https://issue.tarkovtracker.org/bug-report-dev",
+    "method": "GET"
+  },
+  {
+    "id": "bug-report-data",
+    "name": "Bug Report Data",
+    "type": "web",
+    "url": "https://issue.tarkovtracker.org/bug-report-data",
     "method": "GET"
   }
 ]
