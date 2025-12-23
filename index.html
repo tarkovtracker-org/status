@@ -23,36 +23,76 @@
       <div class="timestamp" id="last-updated">Last check: --</div>
     </header>
 
-    <main class="status-grid" id="status-grid">
-      <article class="status-card" data-service="tarkovtracker">
-        <div class="card-top">
-          <h2>TarkovTracker.org</h2>
-          <span class="badge" data-status>Checking...</span>
-        </div>
-        <p class="card-meta">Production web</p>
-        <div class="card-detail">Endpoint: <span data-endpoint></span></div>
-        <div class="card-detail" data-detail>Waiting for response.</div>
-      </article>
+    <main class="layout">
+      <section class="status-column">
+        <div class="status-grid" id="status-grid">
+          <article class="status-card" data-service="tarkovtracker">
+            <div class="card-top">
+              <h2>TarkovTracker.org</h2>
+              <span class="badge" data-status>Checking...</span>
+            </div>
+            <p class="card-meta">Production web</p>
+            <div class="card-detail">Endpoint: <span data-endpoint></span></div>
+            <div class="card-detail" data-detail>Waiting for response.</div>
+          </article>
 
-      <article class="status-card" data-service="dev-tarkovtracker">
-        <div class="card-top">
-          <h2>dev.tarkovtracker.org</h2>
-          <span class="badge" data-status>Checking...</span>
-        </div>
-        <p class="card-meta">Development environment</p>
-        <div class="card-detail">Endpoint: <span data-endpoint></span></div>
-        <div class="card-detail" data-detail>Waiting for response.</div>
-      </article>
+          <article class="status-card" data-service="dev-tarkovtracker">
+            <div class="card-top">
+              <h2>dev.tarkovtracker.org</h2>
+              <span class="badge" data-status>Checking...</span>
+            </div>
+            <p class="card-meta">Development environment</p>
+            <div class="card-detail">Endpoint: <span data-endpoint></span></div>
+            <div class="card-detail" data-detail>Waiting for response.</div>
+          </article>
 
-      <article class="status-card" data-service="trackerbot">
-        <div class="card-top">
-          <h2>TrackerBot</h2>
-          <span class="badge" data-status>Checking...</span>
+          <article class="status-card" data-service="trackerbot">
+            <div class="card-top">
+              <h2>TrackerBot</h2>
+              <span class="badge" data-status>Checking...</span>
+            </div>
+            <p class="card-meta">Discord bot</p>
+            <div class="card-detail">Endpoint: <span data-endpoint></span></div>
+            <div class="card-detail" data-detail>Waiting for response.</div>
+          </article>
         </div>
-        <p class="card-meta">Discord bot</p>
-        <div class="card-detail">Endpoint: <span data-endpoint></span></div>
-        <div class="card-detail" data-detail>Waiting for response.</div>
-      </article>
+      </section>
+
+      <section class="history-column">
+        <div class="history-header">
+          <h2>Last 7 days of incidents</h2>
+          <p>Counts of failed checks grouped per day.</p>
+        </div>
+
+        <div class="history-grid" id="history-grid">
+          <article class="history-card" data-history="tarkovtracker">
+            <div class="history-top">
+              <h3>TarkovTracker.org</h3>
+              <span class="history-total" data-total>-- incidents</span>
+            </div>
+            <svg class="history-chart" viewBox="0 0 260 80" role="img" aria-label="Incident chart"></svg>
+            <div class="history-labels" data-labels></div>
+          </article>
+
+          <article class="history-card" data-history="dev-tarkovtracker">
+            <div class="history-top">
+              <h3>dev.tarkovtracker.org</h3>
+              <span class="history-total" data-total>-- incidents</span>
+            </div>
+            <svg class="history-chart" viewBox="0 0 260 80" role="img" aria-label="Incident chart"></svg>
+            <div class="history-labels" data-labels></div>
+          </article>
+
+          <article class="history-card" data-history="trackerbot">
+            <div class="history-top">
+              <h3>TrackerBot</h3>
+              <span class="history-total" data-total>-- incidents</span>
+            </div>
+            <svg class="history-chart" viewBox="0 0 260 80" role="img" aria-label="Incident chart"></svg>
+            <div class="history-labels" data-labels></div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
