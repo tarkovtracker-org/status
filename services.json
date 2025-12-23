@@ -1,0 +1,23 @@
+[
+  {
+    "id": "tarkovtracker",
+    "name": "TarkovTracker.org",
+    "type": "web",
+    "url": "https://tarkovtracker.org",
+    "method": "GET"
+  },
+  {
+    "id": "dev-tarkovtracker",
+    "name": "dev.tarkovtracker.org",
+    "type": "web",
+    "url": "https://dev.tarkovtracker.org",
+    "method": "GET"
+  },
+  {
+    "id": "trackerbot",
+    "name": "TrackerBot",
+    "type": "discord-bot",
+    "url": "https://trackerbot.tarkovtracker.org/health",
+    "method": "GET"
+  }
+]
