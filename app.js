@@ -2,9 +2,9 @@ const statusEndpoint = "/api/status";
 const historyEndpoint = "/api/history";
 const refreshIntervalMs = 30000;
 
-const grid = document.getElementById("status-grid");
+const grid = document.getElementById("status-history-grid");
 const lastUpdatedEl = document.getElementById("last-updated");
-const historyGrid = document.getElementById("history-grid");
+const historyGrid = document.getElementById("status-history-grid");
 
 function formatTime(isoString) {
   const date = new Date(isoString);
