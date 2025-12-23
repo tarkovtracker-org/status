@@ -3,14 +3,14 @@
     "id": "tarkovtracker",
     "name": "TarkovTracker.org",
     "type": "web",
-    "url": "https://tarkovtracker.org/health",
+    "url": "https://tarkovtracker.org",
     "method": "GET"
   },
   {
     "id": "dev-tarkovtracker",
     "name": "dev.tarkovtracker.org",
     "type": "web",
-    "url": "https://dev.tarkovtracker.org/health",
+    "url": "https://dev.tarkovtracker.org",
     "method": "GET"
   },
   {
