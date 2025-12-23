@@ -26,7 +26,7 @@ jobs:
       - name: Deploy on server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
-            cd /home/niv/TrackerBot-prod &&
+            cd /home/niv/status &&
             chmod +x deploy-prod.sh &&
             ./deploy-prod.sh
           "
