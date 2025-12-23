@@ -25,15 +25,25 @@ async function checkService(service) {
       signal: controller.signal,
     });
     const elapsedMs = Date.now() - start;
+    const serverHeader = response.headers.get("server") || "";
+    const isCloudflare = serverHeader.toLowerCase().includes("cloudflare");
+    const isBadGateway = response.status === 502;
+    const isCloudflareError = isCloudflare && response.status >= 500;
+    const ok = response.ok && !isBadGateway && !isCloudflareError;
 
     return {
       id: service.id,
       name: service.name,
       type: service.type,
       url: service.url,
-      ok: response.ok,
+      ok,
       status: response.status,
       responseTimeMs: elapsedMs,
+      issueReason: isBadGateway
+        ? "Bad gateway"
+        : isCloudflareError
+          ? "Cloudflare error"
+          : null,
     };
   } catch (error) {
     return {
