@@ -19,8 +19,8 @@ for app in status; do
 done
 
 echo "PM2 reload"
-pm2 start ecosystem.config.cjs || true
-pm2 reload ecosystem.config.cjs --update-env
+pm2 start ecosystem.config.js || true
+pm2 reload ecosystem.config.js --update-env
 
 echo "Save PM2 state"
 pm2 save
