@@ -42,7 +42,9 @@ function updateCard(card, service) {
     setBadge(badge, "issue");
     detail.textContent = service.error
       ? `No response · ${service.error}`
-      : `HTTP ${service.status || "--"}`;
+      : service.issueReason
+        ? `${service.issueReason} · HTTP ${service.status || "--"}`
+        : `HTTP ${service.status || "--"}`;
   }
 }
 
