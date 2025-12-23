@@ -134,9 +134,7 @@ async function runScheduledChecks() {
 }
 
 app.get("/api/status", async (_req, res) => {
-  if (!lastResults.length) {
-    await runScheduledChecks();
-  }
+  await runScheduledChecks();
 
   res.json({
     updatedAt: new Date().toISOString(),
