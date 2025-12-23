@@ -4,9 +4,15 @@ on:
   push:
     branches:
       - prod
+  pull_request:
+    branches:
+      - prod
+    types:
+      - closed
 
 jobs:
   deploy:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Deploy over SSH
