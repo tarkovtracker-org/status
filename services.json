@@ -26,5 +26,12 @@
     "type": "web",
     "url": "https://issue.tarkovtracker.org/bug-report-data",
     "method": "GET"
+  },
+  {
+    "id": "monitor-nivmizz7",
+    "name": "monitor.nivmizz7.fr",
+    "type": "web",
+    "url": "https://monitor.nivmizz7.fr",
+    "method": "GET"
   }
 ]
