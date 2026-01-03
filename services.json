@@ -7,13 +7,6 @@
     "method": "GET"
   },
   {
-    "id": "dev-tarkovtracker",
-    "name": "dev.tarkovtracker.org",
-    "type": "web",
-    "url": "https://dev.tarkovtracker.org",
-    "method": "GET"
-  },
-  {
     "id": "bug-report-dev",
     "name": "Bug Report Website",
     "type": "web",
