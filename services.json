@@ -14,17 +14,17 @@
     "method": "GET"
   },
   {
-    "id": "bug-report-dev",
-    "name": "Bug Report Dev",
+    "id": "issue",
+    "name": "Bug Report Website",
     "type": "web",
-    "url": "https://issue.tarkovtracker.org/bug-report-dev",
+    "url": "https://issue.tarkovtracker.org/issue",
     "method": "GET"
   },
   {
-    "id": "bug-report-data",
+    "id": "data",
     "name": "Bug Report Data",
     "type": "web",
-    "url": "https://issue.tarkovtracker.org/bug-report-data",
+    "url": "https://issue.tarkovtracker.org/data",
     "method": "GET"
   },
   {
