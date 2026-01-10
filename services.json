@@ -7,17 +7,10 @@
     "method": "GET"
   },
   {
-    "id": "bug-report-dev",
+    "id": "bug-report-portal",
     "name": "Bug Report Website",
     "type": "web",
-    "url": "https://issue.tarkovtracker.org/issue",
-    "method": "GET"
-  },
-  {
-    "id": "bug-report-data",
-    "name": "Bug Report Data",
-    "type": "web",
-    "url": "https://issue.tarkovtracker.org/data",
+    "url": "https://issue.tarkovtracker.org",
     "method": "GET"
   },
   {
