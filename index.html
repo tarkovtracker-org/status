@@ -27,7 +27,8 @@
         <h2>Last 7 days of incidents</h2>
         <p>Counts of failed checks grouped per day.</p>
       </section>
-
+       </main>
+      
       <section class="status-history-grid" id="status-history-grid">
         <div class="row">
           <article class="status-card" data-service="tarkovtracker">
@@ -51,27 +52,6 @@
         </div>
 
         <div class="row">
-          <article class="status-card" data-service="bug-report-dev">
-            <div class="card-top">
-              <h2>Bug Report Dev</h2>
-              <span class="badge" data-status>Checking...</span>
-            </div>
-            <p class="card-meta">Issue intake (dev)</p>
-            <div class="card-detail">Endpoint: <span data-endpoint></span></div>
-            <div class="card-detail" data-detail>Waiting for response.</div>
-          </article>
-
-          <article class="history-card" data-history="bug-report-dev">
-            <div class="history-top">
-              <h3>Last 7 days</h3>
-              <span class="history-total" data-total>-- incidents</span>
-            </div>
-            <svg class="history-chart" viewBox="0 0 260 80" role="img" aria-label="Incident chart"></svg>
-            <div class="history-labels" data-labels></div>
-          </article>
-        </div>
-
-        <div class="row">
           <article class="status-card" data-service="bug-report-portal">
             <div class="card-top">
               <h2>Bug Report Portal</h2>
@@ -82,7 +62,16 @@
             <div class="card-detail" data-detail>Waiting for response.</div>
           </article>
       </section>
-    </main>
+ 
+          <article class="history-card" data-history="tarkovtracker">
+            <div class="history-top">
+              <h3>Last 7 days</h3>
+              <span class="history-total" data-total>-- incidents</span>
+            </div>
+            <svg class="history-chart" viewBox="0 0 260 80" role="img" aria-label="Incident chart"></svg>
+            <div class="history-labels" data-labels></div>
+          </article>
+        </div>
 
     <footer class="footer">
       <span class="legend good"></span> Operational
