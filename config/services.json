@@ -1,0 +1,10 @@
+[
+  {
+    "id": "tarkovtracker",
+    "name": "TarkovTracker.org",
+    "type": "web",
+    "description": "Production web",
+    "url": "https://tarkovtracker.org",
+    "method": "GET"
+  }
+]

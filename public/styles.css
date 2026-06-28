@@ -53,6 +53,13 @@ body {
   z-index: 1;
 }
 
+.hero-logo {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 8px 24px rgba(214, 167, 94, 0.25));
+}
+
 .kicker {
   font-family: "Special Elite", "Courier New", monospace;
   color: var(--accent);

@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const services = require("./services.json");
+const services = require("./config/services.json");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,7 +11,7 @@ const historyWindowDays = 7;
 const historyStore = new Map();
 let lastResults = [];
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, "public")));
 
 async function checkService(service) {
   const controller = new AbortController();
@@ -35,6 +35,7 @@ async function checkService(service) {
       id: service.id,
       name: service.name,
       type: service.type,
+      description: service.description || null,
       url: service.url,
       ok,
       status: response.status,
@@ -50,6 +51,7 @@ async function checkService(service) {
       id: service.id,
       name: service.name,
       type: service.type,
+      description: service.description || null,
       url: service.url,
       ok: false,
       status: null,
@@ -153,5 +155,5 @@ runScheduledChecks();
 setInterval(runScheduledChecks, historyIntervalMs);
 
 app.listen(port, () => {
-  console.log(`Status server listening on port ${port}`);
+  console.log(`Status server start on : http://localhost:${port}`);
 });

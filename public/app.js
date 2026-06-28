@@ -4,7 +4,8 @@ const refreshIntervalMs = 30000;
 
 const grid = document.getElementById("status-history-grid");
 const lastUpdatedEl = document.getElementById("last-updated");
-const historyGrid = document.getElementById("status-history-grid");
+
+let renderedIds = "";
 
 function formatTime(isoString) {
   const date = new Date(isoString);
@@ -13,6 +14,57 @@ function formatTime(isoString) {
     minute: "2-digit",
     second: "2-digit",
   });
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (char) => {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    }[char];
+  });
+}
+
+function buildRows(services) {
+  grid.innerHTML = services
+    .map((service) => {
+      const name = escapeHtml(service.name || service.id);
+      const meta = escapeHtml(service.description || service.type || "Service");
+      return `
+        <div class="row">
+          <article class="status-card" data-service="${escapeHtml(service.id)}">
+            <div class="card-top">
+              <h2>${name}</h2>
+              <span class="badge checking" data-status>Checking...</span>
+            </div>
+            <p class="card-meta">${meta}</p>
+            <div class="card-detail">Endpoint: <span data-endpoint></span></div>
+            <div class="card-detail" data-detail>Waiting for response.</div>
+          </article>
+
+          <article class="history-card" data-history="${escapeHtml(service.id)}">
+            <div class="history-top">
+              <h3>Last 7 days</h3>
+              <span class="history-total" data-total>-- incidents</span>
+            </div>
+            <svg class="history-chart" viewBox="0 0 260 80" role="img" aria-label="Incident chart"></svg>
+            <div class="history-labels" data-labels></div>
+          </article>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function ensureCards(services) {
+  const ids = services.map((service) => service.id).join("|");
+  if (ids !== renderedIds) {
+    buildRows(services);
+    renderedIds = ids;
+  }
 }
 
 function setBadge(badge, state) {
@@ -95,28 +147,25 @@ function renderHistoryCard(card, serviceHistory, labels) {
   labelsEl.textContent = `${labels[0]} · ${labels[labels.length - 1]}`;
 }
 
-async function loadHistory() {
-  if (!historyGrid) {
-    return;
-  }
+function applyHistory(historyData) {
+  historyData.services.forEach((serviceHistory) => {
+    const card = grid.querySelector(`[data-history="${serviceHistory.id}"]`);
+    if (card) {
+      renderHistoryCard(card, serviceHistory, historyData.labels);
+    }
+  });
+}
 
+async function loadHistory() {
   try {
     const response = await fetch(historyEndpoint, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("History fetch failed");
     }
 
-    const data = await response.json();
-    data.services.forEach((serviceHistory) => {
-      const card = historyGrid.querySelector(
-        `[data-history="${serviceHistory.id}"]`
-      );
-      if (card) {
-        renderHistoryCard(card, serviceHistory, data.labels);
-      }
-    });
+    applyHistory(await response.json());
   } catch (error) {
-    historyGrid.querySelectorAll(".history-card").forEach((card) => {
+    grid.querySelectorAll(".history-card").forEach((card) => {
       const chart = card.querySelector(".history-chart");
       const totalEl = card.querySelector("[data-total]");
       const labelsEl = card.querySelector("[data-labels]");
@@ -128,8 +177,6 @@ async function loadHistory() {
 }
 
 async function loadStatus() {
-  setCheckingState();
-
   try {
     const [statusResponse, historyResponse] = await Promise.all([
       fetch(statusEndpoint, { cache: "no-store" }),
@@ -141,8 +188,10 @@ async function loadStatus() {
     }
 
     const data = await statusResponse.json();
+    ensureCards(data.services);
+
     data.services.forEach((service) => {
-      const card = document.querySelector(`[data-service="${service.id}"]`);
+      const card = grid.querySelector(`[data-service="${service.id}"]`);
       if (card) {
         updateCard(card, service);
       }
@@ -151,15 +200,7 @@ async function loadStatus() {
     lastUpdatedEl.textContent = `Last check: ${formatTime(data.updatedAt)}`;
 
     if (historyResponse.ok) {
-      const historyData = await historyResponse.json();
-      historyData.services.forEach((serviceHistory) => {
-        const card = historyGrid.querySelector(
-          `[data-history="${serviceHistory.id}"]`
-        );
-        if (card) {
-          renderHistoryCard(card, serviceHistory, historyData.labels);
-        }
-      });
+      applyHistory(await historyResponse.json());
     } else {
       await loadHistory();
     }
