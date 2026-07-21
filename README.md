@@ -1,3 +1,9 @@
+# This repository is archived.
+The status page of TarkovTracker.org services can be found on : 
+- [OnlineOrNot Status page](https://tarkovtracker.onlineornot.com)
+- [Kuma Status page](https://status.nivmizz7.dev/status/tarkovtracker)
+- [TarkovTracker.org Discord Server](https://discord.gg/PpdDwd2M6V)
+# 
 <div align="center">
 
 <table border="0"><tr>
